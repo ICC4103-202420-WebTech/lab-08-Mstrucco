@@ -1,7 +1,7 @@
 # Lab 08
 
 In this lab you will have to build an exercise tracking app.
-
+ tets
 ## Instructions
 
 Create a new Ruby on Rails application using Bootstrap and PostgreSQL to allow users to track their exercises.
