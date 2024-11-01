@@ -1,0 +1,28 @@
+<div class="jumbotron text-center">
+    <h1>Your Training Sessions</h1>
+  <% if user_signed_in? %>
+    <p>
+      Logged in as <%= current_user.email %>. 
+      <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+    </p>
+  <% else %>
+    <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<%= link_to 'New Session', new_training_session_path, class: 'btn btn-primary mb-3' %>
+
+<div class="card-deck">
+  <% @training_sessions.each do |session| %>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title"><%= session.activity %> - <%= session.date %></h5>
+        <p class="card-text"><%= session.description %></p>
+        <p class="card-text"><small class="text-muted">Duration: <%= session.duration %> minutes</small></p>
+        <%= link_to 'Show', training_session_path(session), class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_training_session_path(session), class: 'btn btn-warning' %>
+        <%= button_to 'Delete', training_session_path(session), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+</div>
